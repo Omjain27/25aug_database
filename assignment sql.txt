@@ -1,0 +1,41 @@
+assignment sql
+
+create database assignment
+
+CREATE TABLE salseperson
+(
+    sal_no int PRIMARY KEY,
+    sal_name varchar(99),
+    sal_city varchar(99),
+    sal_comm int 
+)
+
+INSERT INTO salseperson(sal_no,sal_name,sal_city,sal_comm) VALUES(1001,"peel","london",.12);
+INSERT INTO salseperson(sal_no,sal_name,sal_city,sal_comm) VALUES(1002,"serres","san jose",.13);
+INSERT INTO salseperson(sal_no,sal_name,sal_city,sal_comm) VALUES(1004,"motika","london",.11);
+INSERT INTO salseperson(sal_no,sal_name,sal_city,sal_comm) VALUES(1007,"rafkin","barcelona",.15);
+INSERT INTO salseperson(sal_no,sal_name,sal_city,sal_comm) VALUES(1003,"axelrod","new york",.1);
+
+
+
+create table customer
+(
+cnm int,
+cname varchar(99),
+city varchar(99),
+rating varchar(99),
+
+sal_no_fk int,
+
+forign key (sal_no_fk) refrence salseperson(sal_no)
+)
+
+INSERT INTO customer(c_nm,c_name,c_city,c_rating,sal_no_fk) VALUES(201,"hoffman","london",100,1001);
+INSERT INTO customer(c_nm,c_name,c_city,c_rating,sal_no_fk) VALUES(202,"giovanne","roe",200,1003);
+INSERT INTO customer(c_nm,c_name,c_city,c_rating,sal_no_fk) VALUES(203,"liu","san jose",300,1002);
+INSERT INTO customer(c_nm,c_name,c_city,c_rating,sal_no_fk) VALUES(204,"grass","barcelona",100,1002);
+INSERT INTO customer(c_nm,c_name,c_city,c_rating,sal_no_fk) VALUES(206,"clemens","london",300,1007);
+INSERT INTO customer(c_nm,c_name,c_city,c_rating,sal_no_fk) VALUES(207,"pereira","roe",100,1004);
+
+select * from customer where 
+
