@@ -1,0 +1,16 @@
+1) What is OOP? List OOP concepts 
+
+ans :- oops(object oriented programming) is a programming approach that are based on classes and objects which can   contain data and code that manipulate that data.
+
+	>There are some basic concepts that act as the building blocks of OOPs.
+	 Classes & Objects.
+	 Abstraction.
+	 Encapsulation.
+ 	 Inheritance.
+	 Polymorphism.
+
+2) What is the difference between OOP and POP?
+
+ans :-
+ 
+On one hand, the OOP programming style separates an entire program into objects. The POP programming style, on the other hand, divides it into functions. Thus, the basic difference between OOP and POP is that the former treats data as objects, while the latter treats code as a sequence of steps.

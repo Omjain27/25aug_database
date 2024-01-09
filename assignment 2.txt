@@ -1,0 +1,52 @@
+1) enter the information using printf.
+	your name
+	your age
+	your birthdate
+	your address
+
+ans:-
+	#include<stdio.h>
+	main()
+	{
+		printf("name=om jain");
+		printf("age=18");
+		printf("birthdate=23-12-2004");
+		printf("dis.pratapgarh,teh.dhariawad,mungana");
+	}
+
+2) Write a program to make Simple calculator (to make addition, subtraction,
+   multiplication, division and modulo)
+
+ans:-
+	#include<stdio.h>
+	main()
+	int a,b, sum=0;
+	
+ 
+	{
+		printf("enter enter the two numbers a and b :\n");
+		scanf("%d%d",&a ,&b);
+		 addition:-
+			   sum = a + b ;
+			   printf("sum of a and b is : %d",sum);
+
+
+		subtraction:-
+			     subtraction = a - b;
+			     printf("subtraction of a and b is :%d",subtraction)
+
+
+		muntiplaction:-
+			       multiplaction = a * b
+                               printf("multiplaction of both numbers is %d",multiplaction);
+
+
+		dividation:-
+			     dividion= (a)/b
+			     printf("division of a and b is %d",dividation);
+	
+			      			      
+
+				
+		
+		

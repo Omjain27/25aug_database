@@ -1,0 +1,332 @@
+SQL NOTES—----------------------------------------------------
+
+DBMS:- Database Management System
+
+	Database  + Management
+
+Database :- Database is used to store large amount of data.
+
+Per software / per company there is only one database.
+But there is more tables in database.
+
+Mysql
+Mongodb
+Oracle
+Postgresql
+
+
+SQL:- Structured Query Language
+—--------> IT stores the data in a structured format using row and columns(tables).
+
+Mysql:- server
+host:-localhost(127.0.0.1)
+Port:-3306
+
+Database creation :- 
+CREATE DATABASE 25Aug_db
+
+Int :- 11
+varchar(variable character):- 0 to 255
+
+To view all database:- 
+SHOW DATABASES
+
+Table creation:-   
+CREATE TABLE student
+( 
+ 			stu_id int,
+			stu_name varchar(40),
+			stu_subject varchar(40),
+)
+
+Insertion of data:- 
+INSERT INTO student(stu_id,stu_name,stu_subject) VALUES(1,"Manav","Python");
+INSERT INTO student(stu_id,stu_name,stu_subject) VALUES(2,"Abhishek","Java");
+INSERT INTO student(stu_id,stu_name,stu_subject) VALUES(3,"Om","Flutter");
+INSERT INTO student(stu_id,stu_name,stu_subject) VALUES(4,"Smit","Fullstack");
+INSERT INTO student(stu_id,stu_name,stu_subject) VALUES(5,"Maulik","PHP");
+
+To change the column name:-
+ ALTER TABLE student CHANGE stu_id student_id int
+
+TO add new column:-
+ALTER TABLE student ADD stu_marks int
+
+TO DELETE ANY COLUMN:-
+ALTER TABLE student DROP COLUMN stu_marks 
+
+TO update values in table:-
+UPDATE student SET stu_name="ABHI" WHERE student_id=4
+UPDATE student SET stu_subject="DSA"WHERE student_id=5
+
+TO DELETE the particular value from table:-
+DELETE FROM student WHERE student_id=4
+DELETE FROM student WHERE stu_subject="java"
+
+TO delete the all values from table:-
+TRUNCATE TABLE student
+
+TO delete the whole table:-
+DROP TABLE student
+
+Difference between drop and truncate:-
+Truncate will delete all values from table and drop and will delete the whole table.
+
+Keys in SQL:-
+
+1) Primary Key:- Primary Key is a constraint in SQL that identifies a unique value in table.
+
+------> Only one PRIMARY KEY is allowed in one table.
+
+
+AUTO_INCREMENT:-It increases value automatically
+
+CREATE  DATABASE amazon_db
+
+CREATE TABLE category
+(
+		cate_id int PRIMARY KEY AUTO_INCREMENT,
+		cate_name varchar(40)
+
+
+)
+2)  Foriegn Key:- It is a constraint in sql that refers to the primary key of another table.
+
+----->Foriegn Key can be more than in one table.
+
+CREATE TABLE subcategory
+( 	
+
+		subcate_id int PRIMARY KEY AUTO_INCREMENT,
+		subcate_name varchar(40),
+	
+		cate_id_fk int,
+		FORIEGN KEY(cate_id_fk) REFERENCES category(cate_id)
+
+)
+
+------->USING PRODUCT IN SQL------------------
+
+CREATE TABLE product
+(
+		prd_id int PRIMARY KEY AUTO INCREMENT, 
+		prd_name varchar(48), 
+		prd_price int,
+ 		prd_disc_price int,
+
+		cate_id_fk int, 
+		subcate_id_fk int,
+
+		FOREIGN KEY(cate_id_fk) REFERENCES category(cate_id),
+		FOREIGN KEY (subcate_id fk) REFERENCES subcategory (subcate_id)
+)
+
+------->IN QUERY TO INSERT PRIMARY KEY:-
+
+INSERT INTO product (prd_name, prd_price,prd_disc_price,cate_id fk, subcate_id_FK) VALUES ("Kurta", 3000, 150,1,1);
+
+
+CREATE DATABASE bollywood
+
+CREATE TABLE movies
+(
+
+movie_id int PRIMARY KEY AUTO INCREMENT 
+movie_name varchar(40), 
+movie_review varchar(40)
+)
+ 
+CREATE TABLE celebrity
+(
+celebrity_id int PRIMARY KEY AUTO INCREMENT, 
+celebrity_name varchar(40),
+	
+Movie_id_fk int,
+FOREIGN KEY(movie_id_fk) REFERENCES movies(movie_id)
+
+
+3)Unique Key:- IT is a constraint in sql that identifies a unique in a table.
+
+Difference Between primary key  and unique key
+
+
+Primary key                                                               					Unique key
+
+1)It does not accepts the null							1)It accepts the null value.
+Value.
+
+2)Only one primary key is allowed 			               	  2)More than one unique key            		  in one table.								            is allowed in one table.
+
+3)It allows auto_increment.			                         3) It does not allow auto_increment.								
+
+DATA reading or fetching:-
+Select  queries:-
+*-universal
+
+where:-condition
+
+SELECT  *  FROM product (tablename)
+
+SELECT  * FROM product WHERE prd_id=3
+
+SELECT  * FROM product WHERE prd_id=1
+
+SELECT  * FROM product WHERE prd_name="Dress"
+
+SELECT  * FROM product WHERE prd_price=3000
+
+SELECT  * FROM product WHERE prd_desc_price-200
+
+SELECT *  prd_name, prd_price FROM product
+
+SELECT * prd_name,prd_price,prd_price FROM product
+
+SELECT * FROM product  WHERE prd_price>2000
+
+SELECT * FROM product  WHERE prd_desc_price<500
+
+SELECT * FROM product  WHERE prd_price BETWEEN 1000 AND 3000
+
+Aggregate Functions:-
+
+MIN:-SELECT prd_name, MIN(prd_price) FROM product
+
+MAX:-SELECT prd_name, MAX(prd_price) FROM product
+
+COUNT:-SELECT COUNT(prd_id) FROM product
+
+SUM:-SELECT SUM(prd_price) FROM product
+
+AVG:-SELECT AVG(prd_price) FROM product
+
+ORDER BY:-
+SELECT * FROM product ORDER BY prd_price ASC
+
+SELECT * FROM product ORDER BY prd_dis DESC
+
+ALIAS:-TO CHANGE THE COLUMN NAME TEMPORARY- AS
+
+= SELECT SUM(prd_price) AS total FROM product
+
+DATA-TIME  functions:-
+
+curdate():- SELECT curdate()
+
+curtime():- SELECT curtime()
+
+now():- SELECT now()
+
+
+STRING functions:-
+
+concat():- SELECT concat(“MANAV”,” ”,” GATHANI”)
+
+SELECT concat (fname ,”   ",lname) AS fullname FROM student
+
+reverse():- SELECT reverse (“MANAV”)
+
+length():- SELECT length (“MANAV”)
+
+upper():-SELECT upper(“manav”)
+lower():- SELECT lower(“MANAV”)
+
+LIKE and Wildcards:-
+
+SELECT * FROM product WHERE prd_name LIKE ‘D%’--------(‘D%’)---wildcards
+
+SELECT * FROM product WHERE prd_name LIKE ‘ %s’
+
+SELECT  * FROM product WHERE prd_name LIKE ‘_r%’ 
+
+SELECT  * FROM product WHERE prd_name LIKE ‘__a%’ 
+
+SELECT  * FROM product WHERE prd_name LIKE ‘D__%’ 
+
+SELECT  * FROM product WHERE prd_name LIKE ‘K%A’ 
+
+SELECT  * FROM product WHERE prd_name LIKE ‘%Dre%’
+
+
+JOINS:- Joins is used to join two or more tables based on related columns.
+
+1)  INNER JOIN:-It is used to join table based on related or common columns.
+
+SELECT category.cate_name,subcategory.subcate_name FROM category
+INNER JOIN subcategory ON category.cate_id=subcategory.cate_id_fk 
+
+2) LEFT JOIN:- It returns all the records from left table and only matching records from right table.
+
+
+SELECT category.cate_name,subcategory.subcate_name FROM category
+LEFT JOIN subcategory ON category.cate_id=subcategory.cate_id_fk 
+
+3) RIGHT JOIN:-  It returns all the records from right table and only matching records from left table.
+
+
+SELECT category.cate_name,subcategory.subcate_name FROM category
+RIGHT JOIN subcategory ON category.cate_id=subcategory.cate_id_fk 
+
+4) FULL JOIN:- It returns all  the records from table 1 and table 2.
+
+
+
+Distinct keyword:-
+SELECT  DISTINCT age FROM student
+
+---------------------------------------------------
+
+
+advance sql :-
+
+1) procedure :- 
+	create procedure procedurename()
+
+create table candidates
+(
+ 	c_id int,
+	c_name varchar(98)
+)
+
+DELIMITER $$
+CREATE PROCEDURE insert_data()
+BEGIN
+INSERT INTO candidates(c_id,c_name) VALUES(1,"om jain");
+
+END
+
+---------------------------
+procedure without peramiter(in this case same value is printing again and again ) :-
+
+call insert_data();
+call insert_data();
+call insert_data();
+call insert_data();
+
+---------------------------
+
+procedure with peremeter (different values shows in table) :-
+
+
+call insert_data(1,"om","flutter");
+call insert_data(2,"abhishek","java");
+call insert_data(3,"harsh","php");
+call insert_data(4,"jay","full stake");
+
+---------------------------------------------------------------------------------
+
+trigger (for information of changes in table):-
+
+creat  databse trigger
+
+
+create table candidate
+(
+	cand_id int primary key auto_incriment,
+	cand_varchar(99)
+
+)
+
+inster into candidate(cand_id,cand_name) values(1,"om");
+
+
+
